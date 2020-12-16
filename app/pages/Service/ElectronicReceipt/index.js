@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View,Text } from "react-native"
+import{ View,Text,StyleSheet } from "react-native"
 
-class HomePage extends Component {
+class InsureForm extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -9,11 +9,10 @@ class HomePage extends Component {
     render() { 
         return ( 
             <View>
-                <Text>我的</Text>
+                <Text> 电子回执 </Text>
             </View>
-
-         );
+          );
     }
 }
  
-export default HomePage;
+export default InsureForm;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View,Text } from "react-native"
+import{ View,Text,StyleSheet } from "react-native"
 
-class HomePage extends Component {
+class AttendanceManage extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -9,11 +9,10 @@ class HomePage extends Component {
     render() { 
         return ( 
             <View>
-                <Text>首页</Text>
+                <Text> 出席管理 </Text>
             </View>
-
-         );
+          );
     }
 }
  
-export default HomePage;
+export default AttendanceManage;
