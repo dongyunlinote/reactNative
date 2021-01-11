@@ -20,10 +20,13 @@
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "^0.63.3",
+    "react-native-config": "^1.4.1",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-router-flux": "^4.2.0",
-    "react-native-screens": "^2.15.0"
+    "react-native-screens": "^2.15.0",
+    "react-native-scrollable-tab-view": "^1.0.0",
+    "whatwg-fetch": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -40,14 +43,13 @@
   },
   "babel": {
     "plugins": [
-        [
+      [
         "@babel/plugin-proposal-decorators",
         {
-            "legacy": true
+          "legacy": true
         }
-        ],
-        "transform-class-properties"
+      ],
+      "transform-class-properties"
     ]
-}
-
+  }
 }

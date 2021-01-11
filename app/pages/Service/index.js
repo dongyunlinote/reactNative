@@ -98,10 +98,10 @@ class HomePage extends Component {
 
 const styles = StyleSheet.create({
     title:{
-        borderBottomWidth:1,
+        marginLeft:5,
     },
     titleText:{
-        fontSize:20,
+        fontSize:18,
         height:40,
         lineHeight:40,
     },
@@ -111,11 +111,11 @@ const styles = StyleSheet.create({
         flexWrap:"wrap",
         justifyContent:"flex-start",
         alignItems:"center",
+        marginBottom:5,
 
     },
     item:{
         width:"20%",
-        borderWidth:1,
         paddingBottom:10,
         paddingTop:10,
         alignItems:"center",

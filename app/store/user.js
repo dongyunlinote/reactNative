@@ -1,12 +1,11 @@
 import {observable,computed,action,makeAutoObservable} from 'mobx'
 
-export default class HomeStore {
+export default class UserStore {
     constructor() {
         makeAutoObservable(this)
     }
 
-    @observable num = 3 ;
-    @observable amount = 5 ;
+    @observable userName = "小海豚" ;
 
 
     @computed total() {
@@ -15,12 +14,12 @@ export default class HomeStore {
 
 
     @action
-    plus = (v)=>{
+    set = (v)=>{
         
-         this.num += 1
+         this.userName = v
     }
 
     
 }
 
-export const homeStore = new HomeStore()
+export const userStore = new UserStore()

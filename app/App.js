@@ -8,14 +8,17 @@ import {Scene,Router,Modal,StyleSheet,
     Drawer,
     Stack,
     Lightbox,
+    Image
 } from 'react-native-router-flux'
 
+
+import TabIconHome from "./utils/TabsIcon"
 import Home from "./pages/Home"
 import Product from "./pages/Product"
 import Service from "./pages/Service"
-import My from "./pages/My"
-import Login from "./pages/My/login"
-import ForgetPassword from "./pages/My/ForgetPassword"
+import MyPage from "./pages/My"
+import Login from "./pages/User/Login"
+import ForgetPassword from "./pages/User/ForgetPassword"
 
 
 // 服务
@@ -35,12 +38,10 @@ import store from "./store/index"
 export default class App1 extends Component {
     render(){
         return (
-<Provider { ...store }>
-          
+            <Provider { ...store }>
             <Router>
-                
                 <Modal hideNavBar>
-                    <Stack hideNavBar headerMode='screen' key="root"  tabBarPosition="bottom"  initial >
+                    <Scene hideNavBar headerMode='screen' key="root"  tabBarPosition="bottom"  initial >
                         <Tabs
                             key="tabbar"
                             swipeEnabled
@@ -56,12 +57,34 @@ export default class App1 extends Component {
                             tabBarPosition={'bottom'}       // tabbar在顶部还是底部，iOS默认顶部，安卓默认顶部
                             activeTintColor="red"           // 指定标签栏图标的选中色调颜色
                         >
-                                <Stack key="home" hideNavBar={true} component={Home} title="首页" /> 
-                                <Stack key="Product" component={Product} title="产品"  /> 
-                                <Stack key="Service" component={Service} title="服务"  /> 
-                                <Stack key="My" component={My} title="我的" /> 
+                            <Scene 
+                                key="home"
+                                title="首页"
+                                icon={TabIconHome}
+                                hideNavBar
+                                component={Home}
+                                /> 
+                            <Scene 
+                                key="Product" 
+                                initial
+                                icon={TabIconHome} // 图标
+                                component={Product} 
+                                title={"产品"}  
+                                /> 
+                            <Scene 
+                                key="Service"
+                                icon={TabIconHome} // 图标
+                                component={Service} 
+                                title={"服务"}  
+                                /> 
+                            <Scene 
+                                key="My"
+                                icon={TabIconHome} // 图标
+                                component={MyPage} 
+                                title={"我的"} 
+                                /> 
                         </Tabs>
-                        <Scene key="login" initial  path="/login" hideNavBar={true} component={Login} title="登录" />
+                        <Scene key="login"   path="/login" hideNavBar={true} component={Login} title="登录" />
                         <Scene key="forgetPassword"  path="/forgetPassword" hideNavBar={false} component={ForgetPassword} title="忘记密码" />
                         
                         <Scene key="activityManage"  path="/activityManage" hideNavBar={false} component={ActivityManage} title="活动量管理" />
@@ -72,7 +95,7 @@ export default class App1 extends Component {
                         <Scene key="proposalManage"  path="/proposalManage" hideNavBar={false} component={ProposalManage} title="建议书" />
                         <Scene key="simpleInsurance"  path="/simpleInsurance" hideNavBar={false} component={SimpleInsurance} title="简易投保" />
                         
-                    </Stack>
+                    </Scene>
                     
                 </Modal>
             </Router>
@@ -81,3 +104,6 @@ export default class App1 extends Component {
           );
     }
   }
+
+
+ 

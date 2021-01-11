@@ -18,7 +18,7 @@ export default class CheckBox extends Component {
     check = ()=>{
         this.props.check();
     }
-      
+    
     render() { 
         const { title,checkBox } = this.props
         const check = checkBox ? require('../../static/images/checked_icon.png'):require('../../static/images/uncheck_icon.png')
@@ -41,9 +41,6 @@ const styles = StyleSheet.create({
         height:20,
     },
     checkBox:{
-        width:150,
-        borderWidth:1,
-        lineHeight:20,
         fontSize:18,
     }
 

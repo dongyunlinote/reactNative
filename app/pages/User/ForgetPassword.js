@@ -11,7 +11,6 @@ class ForgetPassword extends Component {
     render() { 
         return ( 
             <Text>忘记密码</Text>
-            
          );
     }
 }

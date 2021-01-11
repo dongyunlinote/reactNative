@@ -5,9 +5,11 @@ import {
 
 import CheckBox from "../components/CheckBox"
 import { Actions } from "react-native-router-flux"
+import Config from "react-native-config";
+ 
 
 import { inject, observer } from 'mobx-react';
-@inject("homeStore")
+@inject("homeStore","userStore")
 @observer
 
 class Login extends Component {
@@ -21,6 +23,14 @@ class Login extends Component {
             checkBox:false,
             checkBoxPass:false,
           }
+    }
+    componentDidMount(){
+        const aa = Config.API_URL; // 'https://myapi.com'
+        const bb = Config.GOOGLE_MAPS_API_KEY; // 'abcdefgh'
+
+
+        console.log("Config.API_URL",Config.API_URL)
+        console.log(bb)
     }
 
     login=()=>{
@@ -61,7 +71,10 @@ class Login extends Component {
 
     render() { 
         const { userName,passWord,placeholder,checkBox,checkBoxPass } = this.state
-        const { num } = this.props.homeStore;
+        const { num  } = this.props.homeStore;
+        const total = this.props.homeStore.total();
+
+        
         return ( 
             <View>
                 <ImageBackground
@@ -72,9 +85,9 @@ class Login extends Component {
                 </ImageBackground>
 
 
-                <Text >我的 { num }</Text>
+                <Text> num: { num } </Text>
+                <Text> total: { total } </Text>
                 <Text onPress={()=>{ this._press() }} >change</Text>
-
 
                 <Text>账号</Text>
                 <TextInput
@@ -84,7 +97,6 @@ class Login extends Component {
                     value={userName}>
                 </TextInput>
 
-
                 <Text>密码</Text>
                 <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -92,21 +104,21 @@ class Login extends Component {
                     placeholder="密码" 
                     keyboardType="default"
                     onChangeText={(text) => {this.changePass(text)}}
-                    
                     value={passWord}>
                 </TextInput>
                 
-                <CheckBox title="自动登录" checkBox={checkBox} check={this.checkLogin}></CheckBox>
-                <CheckBox title="记住密码" checkBox={checkBoxPass} check={this.checkPass}></CheckBox>
+                <View style={styles.checkBox}>
+                    <CheckBox title="自动登录" checkBox={checkBox} check={this.checkLogin}></CheckBox>
+                    <CheckBox title="记住密码" checkBox={checkBoxPass} check={this.checkPass}></CheckBox>
+                </View>
 
                 <Button 
                     onPress={this.login}
                     title="登录"
                     color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
                 >登录</Button>
 
-                <Text onPress={()=>{ Actions.forgetPassword()}} >  忘记密码</Text>
+                <Text onPress={()=>{ Actions.forgetPassword()}}>忘记密码</Text>
 
             </View>
          );
@@ -128,7 +140,16 @@ const styles = StyleSheet.create({
     tinyLogo:{
         width:20,
         height:20,
-    }
+    },
+    checkBox:{
+        display:"flex",
+        alignItems:'center',
+        borderWidth:1,
+        flexWrap:"nowrap",
+        flexDirection:"row",
+         justifyContent:"space-between",
+         alignItems:"center",
+    },
 })
  
 export default Login;
